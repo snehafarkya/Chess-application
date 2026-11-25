@@ -11,17 +11,16 @@ api.get("/board", (c) => {
 
   return Response.json(serializeBoard(board));
 });
+
 api.get("/board/square", (c) => {
-    const square = c.req.query("square");
+    const square = c.req.query("square")  ;
     const fen = c.req.query("fen") || "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
   const board = Board.parse(fen);
-
   const piece = board.pieceAt(square);
   if (!piece) {
     return Response.json(null);
   }
-
   return Response.json(serializePiece(piece, square));
 });
 
