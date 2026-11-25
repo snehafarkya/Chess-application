@@ -1,9 +1,11 @@
 import Board from "./src/model/board.js";
-import {serializeBoard, serializeFenError} from "./src/server-view/serialize.js";
+import {serializeBoard, serializeFenError, serializePiece} from "./src/server-view/serialize.js";
 import { FenError } from "./src/errors.js";
 
 const fen =
   "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+  const piece = Board.parse(fen).pieceAt("e1");
+  console.log("Piece at e1:", piece ? serializePiece(piece, "e1") : "No piece found");
 
 try {
   // Parse the FEN inside try

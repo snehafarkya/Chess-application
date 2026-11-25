@@ -1,5 +1,5 @@
 export function serializeBoard(board) {
-      return {
+  return {
     fen: board.toFen(),
     sideToMove: board.sideToMove,
     castlingRights: board.castlingRights,
@@ -8,18 +8,22 @@ export function serializeBoard(board) {
     fullmoveNumber: board.fullmoveNumber,
     startPosition: board.isStartPosition(),
 
-   pieces: board.pieces.map(([square, piece]) => ({
-      letter: piece.letter,
-      color: piece.color,
-      name: piece.name,
-      square: square,
-    })),
+    pieces: board.pieces.map(([square, piece]) =>
+      serializePiece(piece, square),
+    ),
     printed: board.toString().split("\n"),
-
   };
-
 }
 
+export function serializePiece(piece, square) {
+  // Implementation for serializing a single piece
+  return {
+    letter: piece.letter,
+    color: piece.color,
+    name: piece.name,
+    square: square,
+  };
+}
 
 export function serializeError(error) {
   return {
