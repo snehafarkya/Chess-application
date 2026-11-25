@@ -18,10 +18,14 @@ api.get("/board/square", (c) => {
 
   const board = Board.parse(fen);
   const piece = board.pieceAt(square);
-  if (!piece) {
-    return Response.json(null);
+  if(!/^[a-h][1-8]$/.test(square)) {
+    return Response.json({error: "Invalid square format.", status: 400});
+  }
+  else if (!piece) {
+    return Response.json({error: "No piece found at the specified square.", status: 404});
   }
   return Response.json(serializePiece(piece, square));
 });
 
 export default api;
+
