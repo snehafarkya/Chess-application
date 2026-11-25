@@ -30,5 +30,21 @@ api.get("/board/square", (c) => {
   return Response.json(serializePiece(piece, square));
 });
 
+// api to get all pieces on the board, optionally filtered by color
+api.get("/board/pieces", (c) => {
+  const color = c.req.query("color");
+    const fen = c.req.query("fen") || "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+
+  const board = Board.parse(fen);
+  if(color && !["white", "black"].includes(color)) {
+   return Response.json(
+  { error: "Invalid color." },
+  { status: 400 }
+);
+  }
+  const pieces = board.pieces.filter(([square, piece]) => !color || piece.color === color).map(([square, piece]) => serializePiece(piece, square));
+  return Response.json(pieces);
+});
+
 export default api;
 
