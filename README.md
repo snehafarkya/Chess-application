@@ -3,10 +3,9 @@
 ## Submission
 
 If you use GitLab, link to the tag `submission-portfolio-01` in your repository:
-- Gitlab Repo link: https://gitlab.com/student-group320748/Chess-application/-/tree/
-be7f944e6b813a6c7c5a39e18cab98b3ea4b46cc/
 
-- Github Repo link: https://github.com/snehafarkya/Chess-application
+
+- I have deployed it on GitHub. Here is the repo link: https://github.com/snehafarkya/Chess-application
 
 ## Requirements
 
