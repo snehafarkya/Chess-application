@@ -1,0 +1,12 @@
+{
+	auto_https disable_redirects
+	skip_install_trust
+}
+
+localhost:8443 {
+	root * web-server
+	file_server /static/*
+	tls internal
+
+	reverse_proxy /api/* 127.0.0.1:3000
+}
